@@ -1,0 +1,71 @@
+{{template "base" .}}
+
+{{define "title"}}Order{{end}}
+
+{{define "main"}}
+
+    <div class='metadata'>
+        <div class="section">
+            <h1>Info</h1>
+            <div class='info'>
+                <p>order: {{.OrderUID}}</p>
+                <p>track_number: {{.TrackNumber}}</p>
+                <p>entry: {{.Entry}}</p>
+                <p>locale: {{.Locale}}</p>
+                <p>internal_signature: {{.InternalSignature}}</p>
+                <p>dustomer_ID: {{.CustomerID}}</p>
+                <p>delivery_service: {{.DeliveryService}}</p>
+                <p>shard_key: {{.Shardkey}}</p>
+                <p>SMID: {{.SMID}}</p>
+                <p>Date_created: {{.DateCreated}}</p>
+                <p>oof_shard: {{.OofShard}}</p>
+            </div>
+        </div>
+        <div class="section">
+            <h1>Delivery</h1>
+            <div class='delivery'>
+                <p>Name: {{.Delivery.Name}}</p>
+                <p>Phone: {{.Delivery.Phone}}</p>
+                <p>Zip: {{.Delivery.Zip}}</p>
+                <p>City: {{.Delivery.City}}</p>
+                <p>Address: {{.Delivery.Address}}</p>
+                <p>Region: {{.Delivery.Region}}</p>
+                <p>Email: {{.Delivery.Email}}</p>
+            </div>
+        </div>
+        <div class="section">
+            <h1>Payment</h1>
+            <div class='payment'>
+                <p>Transaction: {{.Payment.Transaction}}</p>
+                <p>Request ID: {{.Payment.RequestID}}</p>
+                <p>Currency: {{.Payment.Currency}}</p>
+                <p>Provider: {{.Payment.Provider}}</p>
+                <p>Amount: {{.Payment.Amount}}</p>
+                <p>Payment_dt: {{.Payment.PaymentDT}}</p>
+                <p>Bank: {{.Payment.Bank}}</p>
+                <p>Delivery Cost: {{.Payment.DeliveryCost}}</p>
+                <p>Goods Total: {{.Payment.GoodsTotal}}</p>
+                <p>Custom Fee: {{.Payment.CustomFee}}</p>
+            </div>
+        </div>
+    </div>
+    <div class='items'>
+        <div class="section">
+            <h1>Order Items</h1>
+            {{range .Items}}
+                <div class="item">
+                    <p>Name: {{.Name}}</p>
+                    <p>Track Number: {{.TrackNumber}}</p>
+                    <p>Price: {{.Price}}</p>
+                    <p>RID: {{.RID}}</p>
+                    <p>Sale: {{.Sale}}</p>
+                    <p>Size: {{.Size}}</p>
+                    <p>Total Price: {{.TotalPrice}}</p>
+                    <p>NMID: {{.NMID}}</p>
+                    <p>Brand: {{.Brand}}</p>
+                    <p>Status: {{.Status}}</p>
+                </div>
+            {{end}}
+        </div>
+    </div>
+{{end}}

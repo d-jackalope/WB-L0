@@ -1,0 +1,11 @@
+database:
+  url: "postgres://test:password@postgres:5432/orders-db"
+
+nats-streaming:
+  url: "nats://nats-streaming:4222"
+  cluster_id: orders-cluster
+  client_id: service
+  subject: orders
+
+http-server:
+  url: "orders-service:4000"

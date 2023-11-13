@@ -1,0 +1,27 @@
+{{template "base" .}}
+
+{{define "title"}}Orders{{end}}
+
+{{define "main"}}
+    {{if .Orders}}
+    <h2>Orders: {{.Lenght}}</h2>
+     <table>
+        <tr>
+            <th>Track_number</th>
+            <th>Name</th>
+            <th>OrderUID</th>
+            <th>Date created</th>
+        </tr>
+        {{range .Orders}}
+        <tr>
+            <td><a href='/order?uid={{.OrderUID}}'>{{.TrackNumber}}</a></td>
+            <td>{{.Delivery.Name}}</td>
+            <td>{{.OrderUID}}</td>
+            <td>{{.DateCreated}}</td>
+        </tr>
+        {{end}}
+    </table>
+    {{else}}
+        <p>Нет заказов</p>
+    {{end}}
+{{end}}

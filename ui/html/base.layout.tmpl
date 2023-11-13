@@ -1,0 +1,22 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>{{template "title" .}} - Orders</title>
+        <link rel='stylesheet' href='/static/css/main.css'>
+    </head>
+    <body>
+        <header>
+            <h1><a href='/'>Orders</a></h1>
+            <form action="/order" method="get">
+                <input type="text" name="uid" placeholder="Enter uid" />
+                <input type="submit" value="Search"/>
+            </form>
+        </header>
+        <main>
+            {{template "main" .}}
+        </main>
+    </body>
+</html>
+{{end}}
