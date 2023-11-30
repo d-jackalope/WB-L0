@@ -33,7 +33,7 @@ func (db *ordersDatabase) Create() error {
 		);
 	`
 
-	_, err = conn.Exec(context.Background(), query)
+	_, err = conn.Exec(db.ctx, query)
 	if err != nil {
 		return err
 	}
@@ -51,7 +51,7 @@ func (db *ordersDatabase) Insert(uid string, data []byte) error {
 		INSERT INTO orders (order_uid, data)
 		VALUES ($1, $2)
 	`
-	_, err = conn.Exec(context.Background(), query, uid, data)
+	_, err = conn.Exec(db.ctx, query, uid, data)
 	if err != nil {
 		return err
 	}
@@ -68,7 +68,7 @@ func (db *ordersDatabase) GetAllData() (map[string]models.Order, error) {
 	query := `
 		SELECT data FROM orders;
 	`
-	rows, err := conn.Query(context.Background(), query)
+	rows, err := conn.Query(db.ctx, query)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func (db *ordersDatabase) Exist(uid string) (bool, error) {
 		SELECT EXISTS (SELECT 1 FROM orders WHERE order_uid = $1);
 	`
 	var exist bool
-	err = conn.QueryRow(context.Background(), query, uid).Scan(&exist)
+	err = conn.QueryRow(db.ctx, query, uid).Scan(&exist)
 	if err != nil {
 		return false, err
 	}
